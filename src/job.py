@@ -91,6 +91,8 @@ if __name__ == '__main__':
 
     # Download facebook data and upload to google storage
     get_facebook_data()
+
+    # Update BQ table
     update_bq_table(client, table_ref)
 
 
