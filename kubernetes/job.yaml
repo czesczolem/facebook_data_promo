@@ -1,0 +1,21 @@
+apiVersion: batch/v1beta1
+kind: CronJob
+metadata:
+  name: facebook-data-job
+spec:
+  schedule: "*/5 * * * *"
+  jobTemplate:
+    spec:
+      template:
+        metadata:
+          name: facebook-data-job
+        spec:
+          containers:
+          - name: promo-job
+            image: gcr.io/analytics-242319/promo_job:latest
+            resources:
+              requests:
+                cpu: "1"
+                memory: "256Mi"
+          restartPolicy: Never
+      backoffLimit: 2
